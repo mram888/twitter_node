@@ -19,8 +19,8 @@ node app
 http://localhost:3000/api/tweets/{your_term}
 
 For example:
-http://localhost:3000/api/tweets/trump
-http://localhost:3000/api/tweets/hello
+ * http://localhost:3000/api/tweets/trump
+ * http://localhost:3000/api/tweets/hello
 
 ### Next steps
 Add the frontend to consume the service
