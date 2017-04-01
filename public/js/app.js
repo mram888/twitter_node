@@ -13,14 +13,8 @@
 var host = 'localhost:3000';
 var type="api";
 
-var port = '8080'; //IMPORTANTE: poner puerto 80 con seguridad activada y en apache, sino, no funcionará
-var path = 'gesfarm.api/v1';
-var security_enabled = false; 
 
-//var type="auth";
- 
- 
-angular
+ angular
   .module('sbAdminApp', [
     'oc.lazyLoad',
     'ui.router',
