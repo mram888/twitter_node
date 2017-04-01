@@ -11,7 +11,6 @@
 //------------------VARIABLES GLOBALES
 
 var host = 'localhost:3000';
-var type="api";
 
 
  angular
@@ -27,8 +26,6 @@ var type="api";
     'angularMoment',
     'ngOpenWeatherMap',
     'ngMessages',
-	'ngJsTree',
-	'ui.select2',*/
 	'base64'
 	
   ])
