@@ -26,28 +26,7 @@ function appendObject(obj,tweet){
 }
 
 
-exports.login_check = function (req, res) {
-
-    var params = {_username:req.param('_username'),_password:req.param('_password')};
-	var xhReq = new XMLHttpRequest();
-	var url = "http://localhost/batchess/batchess_silex/public/login_check";
-	//var params = {"_username":"admin@admin.com","_password":"admin"};
-	console.log(params);
-	xhReq.open("POST", url, true);
-
-	//Send the proper header information along with the request
-	xhReq.setRequestHeader("Content-type", "application/json");
-
-	xhReq.onreadystatechange = function() {//Call a function when the state changes.
-		if(xhReq.readyState == 4 && xhReq.status == 201) {
-			res.send(JSON.parse(xhReq.responseText));
-		}
-	}
-	xhReq.send(JSON.stringify(params));
-
-};
-
-  var socket = require('../io').io();
+var socket = require('../io').io();
 var sss = null;
 exports.tweets = function (req, res) {
   console.log("tweets");
