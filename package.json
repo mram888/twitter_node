@@ -10,7 +10,6 @@
     "body-parser": "^1.0.2",
     "consolidate": "^0.14.0",
     "error-handler": "^0.1.4",
-    "express-error-handler": "lastest",
     "express": "~4.1.1",
     "jade": "~0.31.2",
     "method-override": "^1.0.0",

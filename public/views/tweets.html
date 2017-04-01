@@ -1,0 +1,115 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">{{ 'Mikel Rodriguez' | translate }}</a>
+    </div>
+	<form class="navbar-form navbar-right navbar-input-group" name="TweetForm" novalidate>
+	  <div class="form-group" show-errors='{showSuccess: true}'>
+		<input type="text" ng-model="word_search" name="name" class="form-control" placeholder="{{ 'Word_search' | translate }}" required>
+		<!--<p class="help-block" ng-if="TweetForm.name.$error.required">{{ 'error_required' | translate }}</p>-->
+	  </div>
+	  <button  ng-click="showTweets()" ng-disabled="TweetForm.$invalid || working" class="btn btn-default">{{ 'Search' | translate }}</button>
+	  <button ng-click="stop()" class="btn btn-danger" ng-disabled="!working">{{ 'Stop' | translate }}</button>
+	</form>
+	 
+    <!-- /.navbar-header -->
+</nav>
+<br />
+<br />
+
+<div class="row">
+	<div class="col-lg-1">
+	</div>
+    <div class="col-lg-11">
+        <h1 class="page-header">{{ 'Tweets' | translate }}: {{ termino }}</h1>
+		
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#total">{{ 'Totals' | translate }} <div class='badge font-size-40px'>{{ tweets.length }}</div></a> </li>
+		  <li><a data-toggle="tab" href="#positive">{{ 'Positives' | translate }} <div class='badge badge-success font-size-40px'>{{ positive_tweets.length }}</div></a></li>
+		  <li><a data-toggle="tab" href="#neutral">{{ 'Neutrals' | translate }} <div class='badge badge-warning font-size-40px'>{{ neutral_tweets.length }}</div></a></li>
+		  <li><a data-toggle="tab" href="#negative">{{ 'Negatives' | translate }} <div class='badge badge-danger font-size-40px'>{{ negative_tweets.length }}</div></a></li>
+		</ul>
+
+		<div class="tab-content">
+		<br />
+		  <div id="total" class="tab-pane fade in active">
+			<div class="col-lg-5 pre-scrollable">
+				<div ng-repeat="tweet in tweets" class='overflow-hidden panel' ng-class="{ 'background-warning': tweet.sentiment == 0,'background-danger': tweet.sentiment == -1,  'background-success': tweet.sentiment == 1}">
+					<div class='tweet-image'>
+						<img src="{{ tweet.user.profile_image_url }}" class='img-thumbnail' /></div>
+						<div class='tweet-text'>
+							<h4 class='margin-top-4px'>
+								<a href='https://twitter.com/{{ tweet.user.screen_name }}' target="_blank">{{ tweet.user.name }}</a>
+								<span class='color-gray'>@{{ tweet.user.screen_name }}</span>
+							</h4>
+						<div class='margin-zero'>{{ tweet.text }}</div>
+					</div>
+					
+				</div>
+			</div>
+		  </div>
+		  <div id="positive" class="tab-pane fade">
+			<div class="col-lg-5 pre-scrollable">
+				<div ng-repeat="tweet in positive_tweets" class='overflow-hidden panel' ng-class="{ 'background-warning': tweet.sentiment == 0,'background-danger': tweet.sentiment == -1,  'background-success': tweet.sentiment == 1}">
+					<div class='tweet-image'>
+						<img src="{{ tweet.user.profile_image_url }}" class='img-thumbnail' /></div>
+						<div class='tweet-text'>
+							<h4 class='margin-top-4px'>
+								<a href='https://twitter.com/{{ tweet.user.screen_name }}' target="_blank">{{ tweet.user.name }}</a>
+								<span class='color-gray'>@{{ tweet.user.screen_name }}</span>
+							</h4>
+						<div class='margin-zero'>{{ tweet.text }}</div>
+					</div>
+					
+				</div>
+			</div>
+		  </div>
+		  <div id="neutral" class="tab-pane fade">
+			<div class="col-lg-5 pre-scrollable">
+				<div ng-repeat="tweet in neutral_tweets" class='overflow-hidden panel' ng-class="{ 'background-warning': tweet.sentiment == 0,'background-danger': tweet.sentiment == -1,  'background-success': tweet.sentiment == 1}">
+					<div class='tweet-image'>
+						<img src="{{ tweet.user.profile_image_url }}" class='img-thumbnail' /></div>
+						<div class='tweet-text'>
+							<h4 class='margin-top-4px'>
+								<a href='https://twitter.com/{{ tweet.user.screen_name }}' target="_blank">{{ tweet.user.name }}</a>
+								<span class='color-gray'>@{{ tweet.user.screen_name }}</span>
+							</h4>
+						<div class='margin-zero'>{{ tweet.text }}</div>
+					</div>
+					
+				</div>
+			</div>
+		  </div>
+		  <div id="negative" class="tab-pane fade">
+			<div class="col-lg-5 pre-scrollable">
+				<div ng-repeat="tweet in negative_tweets" class='overflow-hidden panel' ng-class="{ 'background-warning': tweet.sentiment == 0,'background-danger': tweet.sentiment == -1,  'background-success': tweet.sentiment == 1}">
+					<div class='tweet-image'>
+						<img src="{{ tweet.user.profile_image_url }}" class='img-thumbnail' /></div>
+						<div class='tweet-text'>
+							<h4 class='margin-top-4px'>
+								<a href='https://twitter.com/{{ tweet.user.screen_name }}' target="_blank">{{ tweet.user.name }}</a>
+								<span class='color-gray'>@{{ tweet.user.screen_name }}</span>
+							</h4>
+						<div class='margin-zero'>{{ tweet.text }}</div>
+					</div>
+					
+				</div>
+			</div>
+		  </div>
+		</div>
+		
+		
+		<div class="col-lg-5">
+			 <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="donut.data" labels="donut.labels" colours="donut.colours"  legend="true"></canvas>
+		</div>
+		
+	</div>
+    <!-- /.col-lg-12 -->
+</div>
+
